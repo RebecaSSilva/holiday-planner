@@ -1,3 +1,5 @@
+/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -10,8 +12,7 @@ body {
 }
 
 .header {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,11 +22,6 @@ body {
     margin: 0;
     font-size: 24px;
     color: #333;
-    margin-bottom: 15px;
-}
-
-.register {
-    margin-left: auto;
 }
 
 .register a {
@@ -33,13 +29,13 @@ body {
     background-color: #007bff;
     color: #fff;
     padding: 8px 16px;
-    margin-bottom: 15px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .register a:hover {
     background-color: #0056b3;
+    color: #f2f2f2;
 }
 
 /* Table Styles */
@@ -66,6 +62,18 @@ body {
     background-color: #f2f2f2;
 }
 
+.edit-icon,
+.delete-icon,
+.pdf-icon {
+    cursor: pointer;    
+}
+
+.edit-icon:hover,
+.delete-icon:hover,
+.pdf-icon:hover {
+    color: #007bff; 
+}
+
 /* Media Queries */
 
 @media (max-width: 768px) {
@@ -78,20 +86,4 @@ body {
         margin-left: 0;
         margin-top: 10px;
     }
-}
-
-/* Logout Button */
-
-#logout-form button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#logout-form button:hover {
-    background-color: #0056b3;
 }

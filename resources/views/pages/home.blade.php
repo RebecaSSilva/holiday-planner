@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container" id="holiday-list">
-
+    
     <div class="header">
         <div class="title-section">
             <h2>Holiday Plan</h2>
@@ -14,7 +14,7 @@
             <a href="#" id="add" class="add">New Holiday</a>
         </div>
     </div>  
-
+    
     <div class="table-container">
         <table id="holidayPlansTable">
             <thead></thead>

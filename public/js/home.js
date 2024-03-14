@@ -1,7 +1,7 @@
 $(() => {
     let table;
 
-    // Inicializar DataTable com processamento do lado do servidor
+    // Initialize DataTable with server-side processing
     table = $('#holidayPlansTable').DataTable({
         serverSide: true,
         processing: true,
@@ -31,6 +31,7 @@ $(() => {
         ],
     });
 
+    // Function to generate action buttons
     function actions(data) {
         return ` <div class="row-action" data-id="${data.id}">
                     <i class="far fa-edit edit-icon" title="Edit"></i>
@@ -39,6 +40,7 @@ $(() => {
                 </div>
                 `;
     }
+
     // Download Pdf
     $('#holidayPlansTable tbody').on('click', '.pdf-icon', function() {
         var id = $(this).closest('.row-action').data('id');
@@ -49,21 +51,21 @@ $(() => {
         }
     });
 
-    // Exibir modal de edição
+    // Show edit modal
     $('#holidayPlansTable tbody').on('click', 'i.edit-icon', function(e) {
         e.stopPropagation();
         var id = $(this).closest('tr').find('.row-action').data('id');
 
         if (id !== undefined) {
             $.get("/holiday-plans/" + id, function(response) {
-                // Preencher o modal com os dados para edição
+                // Fill modal with data for editing
                 $("#editTitle").val(response.info.title);
                 $("#editDescription").val(response.info.description);
                 $("#editDate").val(response.info.date);
                 $("#editLocation").val(response.info.location);
                 $("#editParticipants").val(response.info.participants);
                 $("#editId").val(id);
-                // Exibir o modal de edição
+                // Show edit modal
                 $("#editModal").modal("show");
             }).fail(function() {
                 Swal.fire({
@@ -81,11 +83,12 @@ $(() => {
         }
     });
 
-    // Salvar edição
+    // Save edit
     $('#btnSaveEdit').on('click', function() {
+        // Get ID
         var formId = 'editForm';
 
-        // Verificar se os campos obrigatórios estão preenchidos
+        // Check if required fields are filled
         var requiredFields = ['title', 'description', 'date', 'location'];
         var allFieldsFilled = true;
     
@@ -94,17 +97,18 @@ $(() => {
             if (fieldValue === '') {
                 showError(fieldName);
                 allFieldsFilled = false;
-                return false; // Para sair do loop quando encontrar o primeiro campo vazio
+                return false; 
             }
         });
     
         if (!allFieldsFilled) {
-            return; // Abortar a submissão do formulário se algum campo estiver vazio
+            return;
         }
     
         // Serialize form data
         var formData = $('#' + formId).serialize();
         var productId = $("#editId").val();
+        // Send AJAX request to edit holiday plan
         $.ajax({
             url: "/holiday-plans-edit/" + productId,
             type: 'POST',
@@ -138,10 +142,11 @@ $(() => {
             }
         });
     });
-    
-    // Excluir feriado
+
+    // Delete holiday
     $('#holidayPlansTable tbody').on('click', 'i.delete-icon', function (e) {
         e.stopPropagation();
+        // Get ID
         var id = $(this).closest('tr').find('.row-action');
         var holidayId = id.data('id');
         if (holidayId !== undefined) {
@@ -156,6 +161,7 @@ $(() => {
                 cancelButtonText: 'Cancel',
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Send AJAX request to delete holiday plan
                     $.ajax({
                         url: "/holiday-plans/" + holidayId,
                         type: 'DELETE',
@@ -169,6 +175,7 @@ $(() => {
                                     title: 'Holiday plan deleted!',
                                     html: 'The holiday plan has been deleted successfully.'
                                 }).then(() => {
+                                    // Reload DataTable after successful delete
                                     table.ajax.reload();
                                 });
                             }
@@ -196,16 +203,16 @@ $(() => {
         }
     });
 
-    // Exibir modal de adição de feriado
+    // Show add holiday modal
     $('#add').on('click', function() {
         $("#addModal").modal("show");
     });
 
-    // Salvar novo feriado
+    // Save new holiday
     $('#btnSaveAdd').on('click', function() {
+        // Get ID
         var formId = 'addForm';
-    
-        // Verificar se os campos obrigatórios estão preenchidos
+
         var requiredFields = ['title', 'description', 'date', 'location'];
         var allFieldsFilled = true;
     
@@ -224,8 +231,8 @@ $(() => {
     
         // Serialize form data
         var formData = $('#' + formId).serialize();
-    
-        // Enviar requisição AJAX para armazenar o plano de férias
+
+        // Send AJAX request to store holiday plan
         $.ajax({
             type: 'POST',
             url: '/holiday-plans',
@@ -237,7 +244,7 @@ $(() => {
                         title: 'Success!',
                         text: response.success,
                     }).then(() => {
-                        // Recarregar a DataTable após a criação bem-sucedida
+                        // Reload DataTable after successful creation
                         table.ajax.reload();
                         $('#addModal').modal('hide');
                     });
@@ -259,6 +266,7 @@ $(() => {
         });
     });
     
+   // Function to display error message
     function showError(fieldName) {
         Swal.fire({
             icon: 'error',
