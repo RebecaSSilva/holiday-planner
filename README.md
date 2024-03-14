@@ -31,20 +31,27 @@ php artisan key:generate
 
 Configure your database settings in the .env file:
 
-Run the Docker containers:
+Build and run the Docker containers:
 
+docker-compose build
 docker-compose up -d
 
-php artisan migrate
+Migrate the database:
 
-php artisan db:seed
+docker-compose run --rm app php artisan migrate
+
+Only if php artisan migrate fail try this
+
+docker-compose run --rm app php artisan migrate
+
+Seed the database (optional):
+
+docker-compose run --rm app php artisan db:seed
 
 PS: You can use this login if run seed: 
 login:admin@gmail.com
 password:password
 
-php artisan serve
-
 To run the PHPUnit tests, execute the following command:
 
-php artisan test tests/unit/HolidayPlanApiTest.php
+docker-compose run --rm app php artisan test tests/Unit/HolidayPlanApiTest.php
