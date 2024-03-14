@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: planner
+    container_name: planner-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - planner
+
+  db:
+    image: mysql:5.7
+    container_name: planner-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: holiday_planner
+      MYSQL_ROOT_PASSWORD: MYSQL_ALLOW_EMPTY_PASSWORD
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - planner
+
+  nginx:
+    image: nginx:alpine
+    container_name: planner-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - planner
+
+networks:
+  planner:
+    driver: bridge

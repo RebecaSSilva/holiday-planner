@@ -31,11 +31,11 @@ php artisan key:generate
 
 Configure your database settings in the .env file:
 
-Run the database migrations to create the necessary tables:
+Run the Docker containers:
+
+docker-compose up -d
 
 php artisan migrate
-
-Optionally, seed the database with sample data:
 
 php artisan db:seed
 
