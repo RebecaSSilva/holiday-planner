@@ -55,3 +55,15 @@ password:password
 To run the PHPUnit tests, execute the following command:
 
 docker-compose run --rm app php artisan test tests/Unit/HolidayPlanApiTest.php
+
+
+![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/be07db8a-c0f9-4220-bae1-d28efcd230fe)
+![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/1a4191cb-4066-4271-97e0-4a80104d417b)
+![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/53ccef86-cc11-4cae-82c9-fc93bf4cd65e)
+![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/bd7b4c8a-745d-4703-80af-c6c033a92cba)
+![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/3ee53060-4cdb-47c9-b8df-93005269456d)
+
+
+
+
+
