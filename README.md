@@ -10,7 +10,7 @@ Follow these steps to set up and run the Holiday Plans Application on your local
 
 Before you begin, make sure you have the following installed on your system:
 
-- PHP (>= 8.1)
+- PHP (= 8.2)
 - Composer
 - MySQL or any other compatible database server
 - Git
@@ -56,6 +56,8 @@ To run the PHPUnit tests, execute the following command:
 
 docker-compose run --rm app php artisan test tests/Unit/HolidayPlanApiTest.php
 
+If you have problem with php version you can try using this on php.ini:
+[Uploading php.ini…]()[PHP]
 
 ![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/be07db8a-c0f9-4220-bae1-d28efcd230fe)
 ![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/1a4191cb-4066-4271-97e0-4a80104d417b)
