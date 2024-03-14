@@ -10,7 +10,7 @@ Follow these steps to set up and run the Holiday Plans Application on your local
 
 Before you begin, make sure you have the following installed on your system:
 
-- PHP (>= 7.3)
+- PHP (>= 8.1)
 - Composer
 - MySQL or any other compatible database server
 - Git
