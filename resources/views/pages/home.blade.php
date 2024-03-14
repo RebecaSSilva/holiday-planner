@@ -14,7 +14,7 @@
             <a href="#" id="add" class="add">New Holiday</a>
         </div>
     </div>  
-    
+    <!-- Datatable -->
     <div class="table-container">
         <table id="holidayPlansTable">
             <thead></thead>
