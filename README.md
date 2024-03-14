@@ -57,7 +57,8 @@ To run the PHPUnit tests, execute the following command:
 docker-compose run --rm app php artisan test tests/Unit/HolidayPlanApiTest.php
 
 If you have problem with php version you can try using this on php.ini:
-[Uploading php.ini…]()[PHP]
+[php.zip](https://github.com/RebecaSSilva/holiday-planner/files/14607750/php.zip)
+
 
 ![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/be07db8a-c0f9-4220-bae1-d28efcd230fe)
 ![image](https://github.com/RebecaSSilva/holiday-planner/assets/102828612/1a4191cb-4066-4271-97e0-4a80104d417b)
